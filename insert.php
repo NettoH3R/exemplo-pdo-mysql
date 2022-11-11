@@ -1,14 +1,20 @@
 <?php
-    require_once './vendor/autoload.php';
+
+require_once './vendor/autoload.php';
 
 use ExemploPDOMySQL\MySQLConnection;
 
-$bd = new MySQLConnection();
+
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $comando = $bd->prepare('INSERT INTO generos(nome) V');
-    $comando->execute([':id'=> $_GET['id']]);
+    $bd = new MySQLConnection();
+
+    $comando = $bd->prepare('INSERT INTO generos(nome) VALUES (:nome)');
+    $comando->execute([':nome'=> $_POST['nome']]);
+
+    header('Location:/index.php');
+}
 
 ?>
 
@@ -21,6 +27,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <title>Novo Gênero</title>
 </head>
 <body>
-    
+    <form action="insert.php" method="POST">
+        <label for="nome">Nome Gênero</label>
+        <input type="text" required name="nome"/>
+        <button type="submit">Salvar</button>
+    </form>
 </body>
 </html>
