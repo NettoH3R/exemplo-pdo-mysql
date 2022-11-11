@@ -42,6 +42,7 @@ $generos = $comando->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <td><?= $g['id'] ?></td>
                 <td><?= $g['nome'] ?></td>
+                <td><a href="update.php?id=<?= $g['id']  ?>"><button type="button" class="btn btn-success">Editar</button></a></td>
             </tr>
         <?php endforeach ?>
     </table>
