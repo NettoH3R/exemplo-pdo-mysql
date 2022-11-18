@@ -16,24 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location:/index.php');
 }
 
+include('./includes/header.php');
+
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Gênero</title>
-</head>
-
-<body>
-    <form action="insert.php" method="POST">
+<h1>Novo Gênero</h1>
+<form action="insert.php" method="POST">
+    <div class="from-group">
         <label for="nome">Nome Gênero</label>
         <input type="text" required name="nome" />
-        <button type="submit">Salvar</button>
-    </form>
-</body>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="index.php" class="btn btn-secondary">Voltar</a>
+</form>
 
-</html>
+<?php include('./includes/footer.php'); ?>

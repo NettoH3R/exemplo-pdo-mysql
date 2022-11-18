@@ -18,24 +18,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     header('Location:/index.php');
 }
+
+include('./includes/header.php');
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excluir</title>
-</head>
-
-<body>
-    <h1>Remover Gênero</h1>
-    <p>Tem certeza que deseja excluir o gênero "<?= $genero['nome'] ?>"</p>
+<h1>Remover Gênero</h1>
+<p>Tem certeza que deseja excluir o gênero "<?= $genero['nome'] ?>"</p>
+<div class="form-group">
     <form action="delete.php" method="post">
         <input type="hidden" name="id" value="<?= $genero['id'] ?>" />
-        <button type="submit">Excluir</button>
-    </form>
-</body>
+</div>
+<br />
 
-</html>
+<button type="submit" class="btn btn-danger">Excluir</button>
+<a href="index.php" class="btn btn-secondary">Voltar</a>
+</form>
+
+<?php include('./includes/footer.php'); ?>
