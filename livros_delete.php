@@ -4,14 +4,12 @@ require_once './vendor/autoload.php';
 use ExemploPDOMySQL\MySQLConnection;
 
 $bd = new MySQLConnection();
+$livro = null;
 
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if($_SERVER['REQUEST_METHOD'] == 'GET') {
     $comando = $bd->prepare('SELECT * FROM livros WHERE id = :id');
     $comando->execute([':id' => $_GET['id']]);
-
-    $livros = $comando->fetch(PDO::FETCH_ASSOC);
+    $livro = $comando->fetch(PDO::FETCH_ASSOC);
 } else {
     $comando = $bd->prepare('DELETE FROM livros WHERE id = :id');
     $comando->execute([':id' => $_POST['id']]);
@@ -19,19 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     header('Location:/livros_list.php');
 }
 
-include('./includes/header.php');
+$_title = 'Remover Livro';
+
 ?>
 
-<h1>Remover Gênero</h1>
-<p>Tem certeza que deseja excluir o Livro "<?= $livros['titulo'] ?>"</p>
-<form action="delete.php" method="post">
-    <div class="form-group">
-        <input type="hidden" name="id" value="<?= $livros['id'] ?>" />
-    </div>
-    <br />
+<?php include('./includes/header.php') ?>
 
-    <button type="submit" class="btn btn-danger">Excluir</button>
-    <a href="index.php" class="btn btn-secondary">Voltar</a>
-</form>
+            <h1>Remover Livro</h1>
+            <p>Tem certeza que deseja excluir o livro <?= $livro['titulo'] ?>?</p>
 
-<?php include('./includes/footer.php'); ?>
+            <form action="livros_delete.php" method="post">
+                <input type="hidden" name="id" value="<?= $livro['id'] ?>" />
+                <a class="btn btn-secondary" href="livros_list.php">Voltar</a>
+                <button class="btn btn-danger" type="submit">Excluir</button>
+            </form>
+            
+<?php include('./includes/footer.php') ?>
