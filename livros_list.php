@@ -6,7 +6,7 @@ use PDO;
 
 $bd = new MySQLConnection;
 
-$comando = $bd->prepare('SELECT L.id, L.titulo, G.nome FROM livros L inner join generos G on L.id_genero = G.id');
+$comando = $bd->prepare('SELECT L.id, L.titulo, G.nome AS genero FROM livros L inner join generos G on L.id_genero = G.id');
 $comando->execute();
 $livros = $comando->fetchAll(PDO::FETCH_ASSOC);
 
@@ -19,16 +19,16 @@ include('./includes/header.php');
         <th>Id</th>
         <th>Nome</th>
         <th>Gênero</th>
-        <th><a href="livro_insert.php"><button type="button" class="btn btn-secondary">+</button></a></th>
+        <th><a href="livros_insert.php"><button type="button" class="btn btn-secondary">+</button></a></th>
     </tr>
     <?php foreach ($livros as $l) : ?>
         <tr>
             <td><?= $l['id'] ?></td>
             <td><?= $l['titulo'] ?></td>
-            <td><?= $l['nome'] ?></td>
+            <td><?= $l['genero'] ?></td>
             <td>
-                <a href="livros_update.php?id=<?= $g['id']  ?>"><button type="button" class="btn btn-success">Editar</button></a>
-                <a href="livros_delete.php?id=<?= $g['id']  ?>"><button type="button" class="btn btn-danger">Excluir</button></a>
+                <a href="livros_update.php?id=<?= $l['id']  ?>"><button type="button" class="btn btn-success">Editar</button></a>
+                <a href="livros_delete.php?id=<?= $l['id']  ?>"><button type="button" class="btn btn-danger">Excluir</button></a>
             </td>
         </tr>
     <?php endforeach ?>
