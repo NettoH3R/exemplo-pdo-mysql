@@ -32,7 +32,7 @@
                             <a class="nav-link" href="./index.php">Gêneros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Livros</a>
+                            <a class="nav-link" href="./livros_list.php">Livros</a>
                         </li>
                     </ul>
                 </div>
