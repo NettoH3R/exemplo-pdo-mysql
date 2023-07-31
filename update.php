@@ -24,15 +24,15 @@ include('./includes/header.php')
 
 
 <div class="form-group">
-    <h1>Alterar Gênero</h1>
-    <form action="update.php" method="post">
-        <input type="hidden" name="id" value="<?= $genero['id'] ?>">
-        <label for="nome">Nome do Gênero</label>
-        <input type="text" required name="nome" value="<?= $genero['nome'] ?>">
-</div>
-<br />
-<button type="submit" class="btn btn-success">Salvar</button>
-<a href="index.php" class="btn btn-secondary">Voltar</a>
+<h1>Alterar Gênero</h1>
+<form action="update.php" method="post">
+    <input type="hidden" name="id" value="<?= $genero['id'] ?>">
+    <input type="text" required name="nome" value="<?= $genero['nome'] ?>">
+    <label for="nome">Nome do Gênero</label>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="index.php" class="btn btn-secondary">Voltar</a>
 </form>
 
 <?php include('./includes/footer.php'); ?>
