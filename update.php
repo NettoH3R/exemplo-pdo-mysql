@@ -27,7 +27,6 @@ include('./includes/header.php')
 <h1>Alterar Gênero</h1>
 <form action="update.php" method="post">
     <input type="hidden" name="id" value="<?= $genero['id'] ?>">
-    <input type="text" required name="nome" value="<?= $genero['nome'] ?>">
     <label for="nome">Nome do Gênero</label>
     </div>
     <br />
